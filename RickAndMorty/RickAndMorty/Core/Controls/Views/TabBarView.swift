@@ -12,10 +12,10 @@ struct TabBarView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            Text("Characters")
+            CharactersListView()
                 .tag(0)
                 .tabItem { Label("Characters", systemImage: "person.3.fill") }
-            Text("Favorites")
+            FavoritesListView()
                 .tag(1)
                 .tabItem { Label("Favorites", systemImage: "heart.fill") }
         }
