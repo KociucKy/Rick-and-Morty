@@ -19,6 +19,10 @@
 		88B87DA52A70268900EF9A6E /* APIAllCharactersInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DA42A70268900EF9A6E /* APIAllCharactersInfo.swift */; };
 		88B87DA82A70278300EF9A6E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DA72A70278300EF9A6E /* HTTPClient.swift */; };
 		88B87DAA2A7028B600EF9A6E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DA92A7028B600EF9A6E /* APIError.swift */; };
+		88B87DAE2A7029FA00EF9A6E /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DAD2A7029FA00EF9A6E /* APIEndpoint.swift */; };
+		88B87DB02A702A3600EF9A6E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DAF2A702A3600EF9A6E /* HTTPMethod.swift */; };
+		88B87DB22A702A5B00EF9A6E /* HTTPScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DB12A702A5B00EF9A6E /* HTTPScheme.swift */; };
+		88B87DB52A702A8A00EF9A6E /* CharactersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87DB42A702A8A00EF9A6E /* CharactersEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		88B87DA42A70268900EF9A6E /* APIAllCharactersInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAllCharactersInfo.swift; sourceTree = "<group>"; };
 		88B87DA72A70278300EF9A6E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		88B87DA92A7028B600EF9A6E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		88B87DAD2A7029FA00EF9A6E /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		88B87DAF2A702A3600EF9A6E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		88B87DB12A702A5B00EF9A6E /* HTTPScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPScheme.swift; sourceTree = "<group>"; };
+		88B87DB42A702A8A00EF9A6E /* CharactersEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +153,9 @@
 		88B87D9C2A70248C00EF9A6E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				88B87DAC2A7029DD00EF9A6E /* NetworkingTools */,
+				88B87DB32A702A8100EF9A6E /* Endpoints */,
 				88B87D9D2A70249400EF9A6E /* APIModels */,
-				88B87DA72A70278300EF9A6E /* HTTPClient.swift */,
-				88B87DA92A7028B600EF9A6E /* APIError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -169,6 +177,26 @@
 				88B87DA02A7025DB00EF9A6E /* APILocation.swift */,
 			);
 			path = Characters;
+			sourceTree = "<group>";
+		};
+		88B87DAC2A7029DD00EF9A6E /* NetworkingTools */ = {
+			isa = PBXGroup;
+			children = (
+				88B87DA72A70278300EF9A6E /* HTTPClient.swift */,
+				88B87DA92A7028B600EF9A6E /* APIError.swift */,
+				88B87DAD2A7029FA00EF9A6E /* APIEndpoint.swift */,
+				88B87DAF2A702A3600EF9A6E /* HTTPMethod.swift */,
+				88B87DB12A702A5B00EF9A6E /* HTTPScheme.swift */,
+			);
+			path = NetworkingTools;
+			sourceTree = "<group>";
+		};
+		88B87DB32A702A8100EF9A6E /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				88B87DB42A702A8A00EF9A6E /* CharactersEndpoint.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,12 +291,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				88B87DA32A70261B00EF9A6E /* APIAllCharactersResponse.swift in Sources */,
+				88B87DAE2A7029FA00EF9A6E /* APIEndpoint.swift in Sources */,
 				88B87D9B2A70239E00EF9A6E /* FavoritesListView.swift in Sources */,
 				881DF81B2A7022A800A537A5 /* TabBarView.swift in Sources */,
 				88B87DAA2A7028B600EF9A6E /* APIError.swift in Sources */,
 				881DF80A2A7018BA00A537A5 /* AppEntry.swift in Sources */,
 				88B87DA52A70268900EF9A6E /* APIAllCharactersInfo.swift in Sources */,
 				88B87DA82A70278300EF9A6E /* HTTPClient.swift in Sources */,
+				88B87DB22A702A5B00EF9A6E /* HTTPScheme.swift in Sources */,
+				88B87DB02A702A3600EF9A6E /* HTTPMethod.swift in Sources */,
+				88B87DB52A702A8A00EF9A6E /* CharactersEndpoint.swift in Sources */,
 				88B87DA12A7025DB00EF9A6E /* APILocation.swift in Sources */,
 				88B87D972A70232D00EF9A6E /* CharactersListView.swift in Sources */,
 				88B87D9F2A7024B300EF9A6E /* APICharacter.swift in Sources */,
