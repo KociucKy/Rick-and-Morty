@@ -8,6 +8,6 @@
 import Foundation
 
 struct APIAllCharactersResponse: Decodable {
-    let info: [APIAllCharactersInfo]
+    let info: APIAllCharactersInfo
     let results: [APICharacter]
 }

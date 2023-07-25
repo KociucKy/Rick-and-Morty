@@ -18,11 +18,11 @@ extension CharactersEndpoint: APIEndpoint {
     }
 
     var baseURL: String {
-        return "rickandmortyapi.com/api"
+        return "rickandmortyapi.com"
     }
 
     var path: String {
-        return "/character"
+        return "/api/character"
     }
 
     var parameters: [URLQueryItem] {

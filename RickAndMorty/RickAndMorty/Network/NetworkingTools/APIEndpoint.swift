@@ -13,16 +13,16 @@ protocol APIEndpoint {
     var path: String { get }
     var parameters: [URLQueryItem] { get }
     var method: HTTPMethod { get }
-    func buildURL() -> URLComponents
+    func buildURL() -> URL?
 }
 
 extension APIEndpoint {
-    func buildURL() -> URLComponents {
+    func buildURL() -> URL? {
         var components = URLComponents()
         components.scheme = self.scheme.rawValue
         components.host = self.baseURL
         components.path = self.path
         components.queryItems = self.parameters
-        return components
+        return components.url
     }
 }

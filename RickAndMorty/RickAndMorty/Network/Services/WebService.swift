@@ -14,10 +14,10 @@ protocol WebService {
 
 extension WebService {
     func getURLRequest(for endpoint: APIEndpoint) throws -> URLRequest {
-        let components = endpoint.buildURL()
-        guard let url = components.url else {
+        guard let url = endpoint.buildURL() else {
             throw APIError.invalidURL
         }
+        print("🔔 URL: \(url)")
         return URLRequest(url: url)
     }
 }
