@@ -19,6 +19,10 @@ struct AllCharactersInfo {
         self.next = next
         self.prev = prev
     }
+
+    static var emptyInfo: AllCharactersInfo {
+        return .init(count: 0, pages: 0, next: nil, prev: nil)
+    }
 }
 
 extension AllCharactersInfo {
