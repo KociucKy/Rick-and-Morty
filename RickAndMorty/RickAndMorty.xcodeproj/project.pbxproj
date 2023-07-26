@@ -23,6 +23,7 @@
 		889645FA2A719E3700771130 /* Mulish-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 889645F52A719E3700771130 /* Mulish-Bold.ttf */; };
 		889645FD2A719EE200771130 /* Font+Mulish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889645FC2A719EE200771130 /* Font+Mulish.swift */; };
 		889646002A71A09A00771130 /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889645FF2A71A09A00771130 /* SFSymbols.swift */; };
+		889646022A71A2AF00771130 /* Colors+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889646012A71A2AF00771130 /* Colors+Ext.swift */; };
 		88B87D972A70232D00EF9A6E /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87D962A70232D00EF9A6E /* CharactersListView.swift */; };
 		88B87D9B2A70239E00EF9A6E /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87D9A2A70239E00EF9A6E /* FavoritesListView.swift */; };
 		88B87D9F2A7024B300EF9A6E /* APICharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B87D9E2A7024B300EF9A6E /* APICharacter.swift */; };
@@ -60,6 +61,7 @@
 		889645FB2A719E7800771130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		889645FC2A719EE200771130 /* Font+Mulish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Mulish.swift"; sourceTree = "<group>"; };
 		889645FF2A71A09A00771130 /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
+		889646012A71A2AF00771130 /* Colors+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Ext.swift"; sourceTree = "<group>"; };
 		88B87D962A70232D00EF9A6E /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
 		88B87D9A2A70239E00EF9A6E /* FavoritesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
 		88B87D9E2A7024B300EF9A6E /* APICharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICharacter.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				889645F02A719DBD00771130 /* Fonts */,
 				889645FF2A71A09A00771130 /* SFSymbols.swift */,
+				889646012A71A2AF00771130 /* Colors+Ext.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				88B87DB52A702A8A00EF9A6E /* CharactersEndpoint.swift in Sources */,
 				886E0C122A719037000847F9 /* CharacterLocation.swift in Sources */,
 				88B87DA12A7025DB00EF9A6E /* APILocation.swift in Sources */,
+				889646022A71A2AF00771130 /* Colors+Ext.swift in Sources */,
 				88B87D972A70232D00EF9A6E /* CharactersListView.swift in Sources */,
 				88B87D9F2A7024B300EF9A6E /* APICharacter.swift in Sources */,
 			);
