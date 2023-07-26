@@ -9,9 +9,9 @@ import Foundation
 
 struct CharacterLocation {
     let name: String
-    let url: String
+    let url: URL?
 
-    init(name: String, url: String) {
+    init(name: String, url: URL?) {
         self.name = name
         self.url = url
     }
@@ -19,6 +19,6 @@ struct CharacterLocation {
 
 extension CharacterLocation {
     init(apiItem: APILocation) {
-        self.init(name: apiItem.name, url: apiItem.url)
+        self.init(name: apiItem.name, url: URL(string: apiItem.url))
     }
 }
