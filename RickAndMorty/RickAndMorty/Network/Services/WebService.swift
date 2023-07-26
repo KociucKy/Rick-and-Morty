@@ -17,7 +17,6 @@ extension WebService {
         guard let url = endpoint.buildURL() else {
             throw APIError.invalidURL
         }
-        print("🔔 URL: \(url)")
         return URLRequest(url: url)
     }
 }
