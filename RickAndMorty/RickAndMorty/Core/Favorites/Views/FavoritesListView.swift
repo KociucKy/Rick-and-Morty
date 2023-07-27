@@ -12,11 +12,24 @@ struct FavoritesListView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVStack {
-                    ForEach(realmViewModel.favoriteCharacters) { character in
-                        CharactersListRowView(realmCharacter: character)
+            Group {
+                if !realmViewModel.favoriteCharacters.isEmpty {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(realmViewModel.favoriteCharacters) { character in
+                                CharactersListRowView(realmCharacter: character)
+                            }
+                        }
                     }
+                } else {
+                    VStack(spacing: 8) {
+                        Image(systemName: SFSymbols.heartFilled.rawValue)
+                            .font(.system(size: 75))
+                        Text("You don't have any favorite characters yet.")
+                            .multilineTextAlignment(.center)
+                    }
+                    .font(.mulish(.title, weight: .bold))
+                    .foregroundColor(.gray.opacity(0.7))
                 }
             }
             .navigationTitle("Favorites")
