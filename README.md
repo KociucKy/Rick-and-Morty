@@ -19,3 +19,8 @@
 4. Ability to look at characters' detail information.
 
 ### Screenshots:
+![Screenshot1](Screenshots/IMG_2757.PNG)
+![Screenshot4](Screenshots/IMG_2760.PNG)
+![Screenshot2](Screenshots/IMG_2758.PNG)
+![Screenshot5](Screenshots/IMG_2761.PNG)
+![Screenshot3](Screenshots/IMG_2759.PNG)
