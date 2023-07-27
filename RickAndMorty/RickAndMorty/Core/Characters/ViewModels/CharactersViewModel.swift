@@ -13,6 +13,16 @@ final class CharactersViewModel: ObservableObject {
     @Published var allCharactersInfo: AllCharactersInfo = .emptyInfo
     @Published var isLoading: Bool = false
     @Published var currentPage: Int = 1
+    @Published var error: URLError? {
+        didSet {
+            if error != nil {
+                isShowingError = true
+            } else {
+                isShowingError = false
+            }
+        }
+    }
+    @Published var isShowingError: Bool = false
     let service: WebService
 
     init(service: WebService) {
@@ -39,5 +49,15 @@ final class CharactersViewModel: ObservableObject {
         allCharactersInfo = AllCharactersInfo(apiItem: charactersResponse.info)
         currentPage += 1
         isLoading = false
+    }
+
+    func restartPagination() {
+        currentPage = 1
+        allCharactersInfo = .emptyInfo
+        characters.removeAll()
+        Task {
+            try await loadContent()
+        }
+        error = nil
     }
 }

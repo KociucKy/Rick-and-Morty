@@ -14,7 +14,7 @@ struct APIRequestMapper {
         if (200..<300) ~= response.statusCode {
             return try decoder.decode(T.self, from: data)
         } else {
-            throw APIError.invalidHTTPResponse
+            throw URLError(.badServerResponse)
         }
     }
 }
