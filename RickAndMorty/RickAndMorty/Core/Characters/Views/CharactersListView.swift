@@ -21,10 +21,11 @@ struct CharactersListView: View {
                                 try await charactersViewModel.filterCharacters()
                             }
                         }
-                            .textFieldStyle(.roundedBorder)
-                            .focused($focused)
-                            .showClearButton($charactersViewModel.charactersName)
-                            .padding(.vertical)
+                        .submitLabel(.search)
+                        .textFieldStyle(.roundedBorder)
+                        .focused($focused)
+                        .showClearButton($charactersViewModel.charactersName)
+                        .padding(.vertical)
                     CharactersListScrollView(
                         characters: $charactersViewModel.characters,
                         isLoading: $charactersViewModel.isLoading,
@@ -55,10 +56,12 @@ struct CharactersListView: View {
             }
             .padding(.horizontal)
             .task {
-                do {
-                    try await charactersViewModel.loadContent()
-                } catch {
-                    charactersViewModel.error = error as? URLError
+                if !charactersViewModel.isFiltering {
+                    do {
+                        try await charactersViewModel.loadContent()
+                    } catch {
+                        charactersViewModel.error = error as? URLError
+                    }
                 }
             }
             .alert(
