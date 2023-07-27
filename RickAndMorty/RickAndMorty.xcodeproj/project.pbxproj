@@ -45,6 +45,7 @@
 		88C999582A72952300D5A161 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999572A72952300D5A161 /* CacheAsyncImage.swift */; };
 		88C9995A2A72A57A00D5A161 /* CharactersDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999592A72A57A00D5A161 /* CharactersDetailView.swift */; };
 		88C9995D2A72A61C00D5A161 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9995C2A72A61C00D5A161 /* Router.swift */; };
+		88C9995F2A72A74100D5A161 /* Navigation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9995E2A72A74100D5A161 /* Navigation+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		88C999572A72952300D5A161 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 		88C999592A72A57A00D5A161 /* CharactersDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailView.swift; sourceTree = "<group>"; };
 		88C9995C2A72A61C00D5A161 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		88C9995E2A72A74100D5A161 /* Navigation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				881DF81A2A70228300A537A5 /* Views */,
-				88C9995B2A72A60A00D5A161 /* ViewModels */,
+				88C9995B2A72A60A00D5A161 /* Navigation */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -331,12 +333,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		88C9995B2A72A60A00D5A161 /* ViewModels */ = {
+		88C9995B2A72A60A00D5A161 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				88C9995C2A72A61C00D5A161 /* Router.swift */,
+				88C9995E2A72A74100D5A161 /* Navigation+Ext.swift */,
 			);
-			path = ViewModels;
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +465,7 @@
 				88B87DB02A702A3600EF9A6E /* HTTPMethod.swift in Sources */,
 				88B87DB52A702A8A00EF9A6E /* CharactersEndpoint.swift in Sources */,
 				886E0C122A719037000847F9 /* CharacterLocation.swift in Sources */,
+				88C9995F2A72A74100D5A161 /* Navigation+Ext.swift in Sources */,
 				88B87DA12A7025DB00EF9A6E /* APILocation.swift in Sources */,
 				889646022A71A2AF00771130 /* Colors+Ext.swift in Sources */,
 				88B87D972A70232D00EF9A6E /* CharactersListView.swift in Sources */,

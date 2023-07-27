@@ -9,7 +9,7 @@ import SwiftUI
 
 final class Router: ObservableObject {
     public enum Destination: Hashable {
-        case detail
+        case detail(character: Character)
         case location
     }
     @Published var navPath = NavigationPath()

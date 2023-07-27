@@ -11,8 +11,10 @@ struct CharactersListView: View {
     @StateObject private var charactersViewModel = CharactersViewModel(
         service: CharactersWebService(httpClient: URLSession(configuration: .default))
     )
+    @StateObject private var router = Router()
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.navPath) {
             ScrollView {
                 LazyVStack {
                     ForEach(charactersViewModel.characters) { character in
@@ -26,11 +28,17 @@ struct CharactersListView: View {
                                     print("❌ Error: \(error)")
                                 }
                             }
+                            .onTapGesture {
+                                if !charactersViewModel.isLoading {
+                                    router.navigate(to: .detail(character: character))
+                                }
+                            }
                     }
                 }
             }
             .padding(.horizontal)
             .navigationTitle("Characters")
+            .withAppRouter()
             .task {
                 do {
                     try await charactersViewModel.loadContent()

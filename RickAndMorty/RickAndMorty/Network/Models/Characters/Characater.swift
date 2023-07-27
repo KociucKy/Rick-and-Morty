@@ -88,3 +88,13 @@ extension Character {
         )
     }
 }
+
+extension Character: Hashable {
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+}
