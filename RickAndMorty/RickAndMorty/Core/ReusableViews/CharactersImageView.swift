@@ -14,6 +14,7 @@ struct CharactersImageView: View {
         AsyncImage(url: url) { image in
             image
                 .asyncImageStyling()
+                .clipShape(Circle())
         } placeholder: {
             Image(systemName: SFSymbols.personCircleFilled.rawValue)
                 .asyncImageStyling()

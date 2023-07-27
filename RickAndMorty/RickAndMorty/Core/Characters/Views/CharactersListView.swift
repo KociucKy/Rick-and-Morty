@@ -18,11 +18,10 @@ struct CharactersListView: View {
                     ProgressView()
                         .progressViewStyle(.circular)
                 } else {
-                    ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                    ScrollView {
+                        LazyVStack {
                             ForEach(charactersViewModel.characters) { character in
                                 CharactersListRowView(character: character)
-                                    .redacted(reason: charactersViewModel.isLoading ? .placeholder : [])
                             }
                         }
                     }

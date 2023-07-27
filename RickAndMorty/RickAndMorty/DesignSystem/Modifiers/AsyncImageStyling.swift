@@ -8,11 +8,10 @@
 import SwiftUI
 
 extension Image {
-    func asyncImageStyling(width: CGFloat = 150, height: CGFloat = 150, cornerRadius: CGFloat = 5) -> some View {
+    func asyncImageStyling(width: CGFloat = 100, height: CGFloat = 100) -> some View {
         self
             .resizable()
             .scaledToFit()
             .frame(width: width, height: height)
-            .cornerRadius(cornerRadius)
     }
 }

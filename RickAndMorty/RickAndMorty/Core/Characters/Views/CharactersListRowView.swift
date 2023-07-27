@@ -11,22 +11,39 @@ struct CharactersListRowView: View {
     let character: Character
 
     var body: some View {
-        ZStack {
-            Color(uiColor: .secondarySystemBackground)
-                .cornerRadius(13)
-            VStack(spacing: 16) {
+        VStack {
+            HStack(spacing: 16) {
                 CharactersImageView(url: character.image)
-                VStack(spacing: 0) {
-                    Text(character.name)
-                        .font(.mulish(.headline, weight: .bold))
-                    Text(character.species)
-                        .font(.mulish(.subheadline, weight: .regular))
-                }
-                .foregroundColor(.customTextColor)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                charactersInfoSection(name: character.name, species: character.species, status: character.status)
+                    .foregroundColor(.customTextColor)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                Spacer()
             }
-            .padding(8)
+            Divider()
+                .padding(.top, 8)
+        }
+        .padding(8)
+    }
+
+    private func characterStatusIndicator(status: CharacterStatus) -> some View {
+        HStack(spacing: 4) {
+            Circle()
+                .frame(width: 8, height: 8)
+            Text(status.rawValue)
+        }
+        .foregroundColor(status.getStatusColor())
+    }
+
+    private func charactersInfoSection(name: String, species: String, status: CharacterStatus) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(name)
+                .font(.mulish(.headline, weight: .bold))
+            Group {
+                Text(species)
+                characterStatusIndicator(status: status)
+            }
+            .font(.mulish(.subheadline, weight: .regular))
         }
     }
 }
