@@ -20,8 +20,8 @@ final class CharactersWebService: WebService {
         return try APIRequestMapper.decodeData(data: data, response: response)
     }
 
-    func loadSingleCharacter(id: Int) async throws -> APICharacter {
-        let request = try getURLRequest(for: CharactersEndpoint.getSingleCharacter(id: id))
+    func loadAnotherPage(_ page: Int) async throws -> APIAllCharactersResponse {
+        let request = try getURLRequest(for: CharactersEndpoint.getAnotherCharactersPage(page: page))
         let (data, response) = try await httpClient.perform(request: request)
         return try APIRequestMapper.decodeData(data: data, response: response)
     }
