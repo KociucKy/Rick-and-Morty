@@ -9,7 +9,7 @@ import Foundation
 
 enum CharactersEndpoint {
     case getAllCharacters
-    case getSingleCharacter(id: Int)
+    case getAnotherCharactersPage(page: Int)
 }
 
 extension CharactersEndpoint: APIEndpoint {
@@ -22,15 +22,15 @@ extension CharactersEndpoint: APIEndpoint {
     }
 
     var path: String {
-        return "/api/character"
+        return "/api/character/"
     }
 
     var parameters: [URLQueryItem] {
         switch self {
         case .getAllCharacters:
             return []
-        case .getSingleCharacter(let id):
-            return [URLQueryItem(name: "id", value: "\(id)")]
+        case .getAnotherCharactersPage(let page):
+            return [URLQueryItem(name: "page", value: "\(page)")]
         }
     }
 
@@ -38,3 +38,7 @@ extension CharactersEndpoint: APIEndpoint {
         return .get
     }
 }
+
+// https://rickandmortyapi.com/api/character?page=2
+// https://rickandmortyapi.com/api/character/?page=2
+// https://rickandmortyapi.com/api/character/?page=2

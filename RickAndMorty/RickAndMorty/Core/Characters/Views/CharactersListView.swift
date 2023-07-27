@@ -13,17 +13,19 @@ struct CharactersListView: View {
     )
     var body: some View {
         NavigationStack {
-            Group {
-                if charactersViewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                } else {
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(charactersViewModel.characters) { character in
-                                CharactersListRowView(character: character)
+            ScrollView {
+                LazyVStack {
+                    ForEach(charactersViewModel.characters) { character in
+                        CharactersListRowView(character: character)
+                            .task {
+                                do {
+                                    if character.id == charactersViewModel.characters.last?.id {
+                                        try await charactersViewModel.loadContent()
+                                    }
+                                } catch {
+                                    print("❌ Error: \(error)")
+                                }
                             }
-                        }
                     }
                 }
             }
@@ -31,7 +33,7 @@ struct CharactersListView: View {
             .navigationTitle("Characters")
             .task {
                 do {
-                    try await charactersViewModel.fetchAllCharacters()
+                    try await charactersViewModel.loadContent()
                 } catch {
                     print("❌ Error: \(error)")
                 }
