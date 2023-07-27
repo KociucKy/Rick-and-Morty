@@ -13,16 +13,29 @@ struct CharactersListView: View {
     )
     var body: some View {
         NavigationStack {
-            Text("All characters")
-                .font(.largeTitle)
-                .navigationTitle("Characters")
-                .task {
-                    do {
-                        try await charactersViewModel.fetchAllCharacters()
-                    } catch {
-                        print("❌ Error: \(error)")
+            Group {
+                if charactersViewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                } else {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(charactersViewModel.characters) { character in
+                                CharactersListRowView(character: character)
+                            }
+                        }
                     }
                 }
+            }
+            .padding(.horizontal)
+            .navigationTitle("Characters")
+            .task {
+                do {
+                    try await charactersViewModel.fetchAllCharacters()
+                } catch {
+                    print("❌ Error: \(error)")
+                }
+            }
         }
     }
 }
@@ -30,5 +43,6 @@ struct CharactersListView: View {
 struct CharactersListView_Previews: PreviewProvider {
     static var previews: some View {
         CharactersListView()
+            .preferredColorScheme(.dark)
     }
 }
