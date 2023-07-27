@@ -7,59 +7,6 @@
 
 import SwiftUI
 
-enum CharacterDetails: CaseIterable, Identifiable {
-    case status, type, gender, origin, location
-    var id: Self {
-        return self
-    }
-
-    // TODO: - Add to SFSymbols
-    var icon: String {
-        switch self {
-        case .status:
-            return "cross.fill"
-        case .type:
-            return "pawprint.fill"
-        case .gender:
-            return "person.fill"
-        case .origin:
-            return "house.fill"
-        case .location:
-            return "globe.europe.africa.fill"
-        }
-    }
-
-    var key: String {
-        switch self {
-        case .status:
-            return "Status:"
-        case .type:
-            return "Type:"
-        case .gender:
-            return "Gender:"
-        case .origin:
-            return "Origin:"
-        case .location:
-            return "Location:"
-        }
-    }
-
-    func getKeyValue(character: Character) -> String {
-        switch self {
-        case .status:
-            return character.status.rawValue
-        case .type:
-            return character.type
-        case .gender:
-            return character.gender.rawValue
-        case .origin:
-            return character.origin.name
-        case .location:
-            return character.location.name
-        }
-    }
-}
-
 struct CharactersDetailView: View {
     let character: Character
 
@@ -93,11 +40,13 @@ struct CharactersDetailView: View {
         .foregroundColor(.customTextColor)
     }
 
+    @ViewBuilder
     private func charactersInfoCell(charactersInfo: CharacterDetails) -> some View {
+        let value = charactersInfo.getKeyValue(character: character)
         HStack(spacing: 0) {
             Label(charactersInfo.key, systemImage: charactersInfo.icon)
             Spacer()
-            Text(charactersInfo.getKeyValue(character: character))
+            Text(value.isEmpty ? "Not specified" : value)
         }
         .font(.mulish(.headline, weight: .regular))
         .foregroundColor(.customTextColor)
