@@ -24,14 +24,17 @@ struct CharacterAvatarView: View {
                     .asyncImageStyling(width: width, height: height)
                     .clipShape(Circle())
             case .failure:
-                Image(systemName: SFSymbols.personCircleFilled.rawValue)
-                    .asyncImageStyling(width: width, height: height)
-                    .foregroundColor(.customTextColor)
+                placeholderImage
             @unknown default:
-                // TODO: - Error Handling
-                fatalError()
+                placeholderImage
             }
         }
+    }
+
+    private var placeholderImage: some View {
+        Image(systemName: SFSymbols.personCircleFilled.rawValue)
+            .asyncImageStyling(width: width, height: height)
+            .foregroundColor(.customTextColor)
     }
 }
 

@@ -19,7 +19,7 @@ final class RealmViewModel: ObservableObject {
 
     func checkStatusOnRealmObject(character: RealmCharacter) {
         let object = favoriteCharacters.first(where: { $0.id == character.id })
-        if let _ = object {
+        if object != nil {
             isLiked = true
         } else {
             isLiked = false

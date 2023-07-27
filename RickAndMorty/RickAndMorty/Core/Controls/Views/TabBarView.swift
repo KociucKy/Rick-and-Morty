@@ -26,7 +26,7 @@ struct TabBarView: View {
                 .environmentObject(charactersViewModel)
             FavoritesListView()
                 .tag(1)
-                .tabItem { Label("Favorites", systemImage: SFSymbols.hearFilled.rawValue) }
+                .tabItem { Label("Favorites", systemImage: SFSymbols.heartFilled.rawValue) }
         }
         .environmentObject(realmViewModel)
     }

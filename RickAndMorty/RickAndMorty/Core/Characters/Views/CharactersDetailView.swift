@@ -34,7 +34,9 @@ struct CharactersDetailView: View {
                 Button {
                     realmViewModel.handleLikeAction(character: character)
                 } label: {
-                    Image(systemName: realmViewModel.isLiked ? "heart.fill" : "heart")
+                    Image(
+                        systemName: realmViewModel.isLiked ? SFSymbols.heartFilled.rawValue : SFSymbols.heart.rawValue
+                    )
                 }
             }
         }

@@ -27,6 +27,7 @@ extension Font {
         }
     }
 
+    // swiftlint: disable cyclomatic_complexity
     static func mulishFontSize(_ textStyle: Font.TextStyle) -> CGFloat {
         var fontSize: CGFloat = 20
 

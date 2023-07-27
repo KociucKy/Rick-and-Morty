@@ -8,7 +8,7 @@
 import Foundation
 
 enum SFSymbols: String {
-    case hearFilled = "heart.fill"
+    case heartFilled = "heart.fill"
     case threePersonsFilled = "person.3.fill"
     case personCircleFilled = "person.circle.fill"
     case crossFilled = "cross.fill"
@@ -16,4 +16,7 @@ enum SFSymbols: String {
     case personFilled = "person.fill"
     case houseFilled = "house.fill"
     case globeFilled = "globe.europe.africa.fill"
+    case clearButton = "multiply.circle.fill"
+    case keyboardDown = "keyboard.chevron.compact.down.fill"
+    case heart = "heart"
 }

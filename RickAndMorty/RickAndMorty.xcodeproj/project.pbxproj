@@ -51,6 +51,7 @@
 		88C9996C2A72DE9E00D5A161 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88C9996B2A72DE9E00D5A161 /* RealmSwift */; };
 		88C9996F2A72DED500D5A161 /* RealmCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9996E2A72DED500D5A161 /* RealmCharacter.swift */; };
 		88C999722A72E13700D5A161 /* RealmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999712A72E13600D5A161 /* RealmViewModel.swift */; };
+		88C999782A7300B000D5A161 /* TextFieldClearbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999772A7300B000D5A161 /* TextFieldClearbutton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		88C999652A72DCA700D5A161 /* CharacterDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetails.swift; sourceTree = "<group>"; };
 		88C9996E2A72DED500D5A161 /* RealmCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCharacter.swift; sourceTree = "<group>"; };
 		88C999712A72E13600D5A161 /* RealmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmViewModel.swift; sourceTree = "<group>"; };
+		88C999772A7300B000D5A161 /* TextFieldClearbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearbutton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				881F2E4F2A71B356009901E0 /* AsyncImageStyling.swift */,
+				88C999772A7300B000D5A161 /* TextFieldClearbutton.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				88B87DA82A70278300EF9A6E /* HTTPClient.swift in Sources */,
 				88B87DB22A702A5B00EF9A6E /* HTTPScheme.swift in Sources */,
 				886E0C162A719203000847F9 /* CharacterStatus.swift in Sources */,
+				88C999782A7300B000D5A161 /* TextFieldClearbutton.swift in Sources */,
 				88B87DB02A702A3600EF9A6E /* HTTPMethod.swift in Sources */,
 				88B87DB52A702A8A00EF9A6E /* CharactersEndpoint.swift in Sources */,
 				886E0C122A719037000847F9 /* CharacterLocation.swift in Sources */,
