@@ -16,7 +16,7 @@ struct CharactersListView: View {
             CharactersListScrollView(
                 characters: $charactersViewModel.characters,
                 isLoading: $charactersViewModel.isLoading,
-                loadMoreContent: charactersViewModel.loadContent
+                loadMoreContent: charactersViewModel.loadContentIfNeeded
             )
             .padding(.horizontal)
             .task {
