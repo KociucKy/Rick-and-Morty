@@ -10,6 +10,8 @@ import Foundation
 enum CharactersEndpoint {
     case getAllCharacters
     case getAnotherCharactersPage(page: Int)
+    case filterCharacters(name: String)
+    case getMoreFilterCharacters(name: String, page: Int)
 }
 
 extension CharactersEndpoint: APIEndpoint {
@@ -31,6 +33,13 @@ extension CharactersEndpoint: APIEndpoint {
             return []
         case .getAnotherCharactersPage(let page):
             return [URLQueryItem(name: "page", value: "\(page)")]
+        case .filterCharacters(let name):
+            return [URLQueryItem(name: "name", value: name)]
+        case .getMoreFilterCharacters(let name, let page):
+            return [
+                URLQueryItem(name: "page", value: "\(page)"),
+                URLQueryItem(name: "name", value: name)
+            ]
         }
     }
 
@@ -38,7 +47,3 @@ extension CharactersEndpoint: APIEndpoint {
         return .get
     }
 }
-
-// https://rickandmortyapi.com/api/character?page=2
-// https://rickandmortyapi.com/api/character/?page=2
-// https://rickandmortyapi.com/api/character/?page=2

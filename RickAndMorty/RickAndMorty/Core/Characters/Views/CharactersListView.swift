@@ -10,23 +10,50 @@ import SwiftUI
 struct CharactersListView: View {
     @EnvironmentObject var router: Router
     @EnvironmentObject var charactersViewModel: CharactersViewModel
+    @FocusState private var focused: Bool
 
     var body: some View {
         NavigationStack(path: $router.navPath) {
             Group {
                 if !charactersViewModel.characters.isEmpty {
+                        TextField("Search characters by name", text: $charactersViewModel.charactersName) {
+                            Task {
+                                try await charactersViewModel.filterCharacters()
+                            }
+                        }
+                            .textFieldStyle(.roundedBorder)
+                            .focused($focused)
+                            .showClearButton($charactersViewModel.charactersName)
+                            .padding(.vertical)
                     CharactersListScrollView(
                         characters: $charactersViewModel.characters,
                         isLoading: $charactersViewModel.isLoading,
                         error: $charactersViewModel.error,
-                        loadMoreContent: charactersViewModel.loadContentIfNeeded
+                        loadMoreContent: charactersViewModel.isFiltering ?
+                            charactersViewModel.getMoreFilteredCharactersIfNeeded :
+                            charactersViewModel.loadContentIfNeeded
                     )
-                    .padding(.horizontal)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button {
+                                focused = false
+                            } label: {
+                                Image(systemName: SFSymbols.keyboardDown.rawValue)
+                            }
+                        }
+                    }
+                    .onChange(of: charactersViewModel.charactersName) { newValue in
+                        if newValue.isEmpty {
+                            charactersViewModel.restartPagination()
+                        }
+                    }
                 } else {
                     ProgressView()
                         .progressViewStyle(.circular)
                 }
             }
+            .padding(.horizontal)
             .task {
                 do {
                     try await charactersViewModel.loadContent()

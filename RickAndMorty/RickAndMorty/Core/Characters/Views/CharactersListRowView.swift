@@ -42,7 +42,11 @@ struct CharactersListRowView: View {
                     Button {
                         realmViewModel.handleLikeActionOnRealmObject(character: realmCharacer)
                     } label: {
-                        Image(systemName: realmViewModel.isLiked ? "heart.fill" : "heart")
+                        Image(
+                            systemName: realmViewModel.isLiked ?
+                                SFSymbols.heartFilled.rawValue :
+                                SFSymbols.heart.rawValue
+                        )
                             .imageScale(.large)
                     }
                     .onAppear {
