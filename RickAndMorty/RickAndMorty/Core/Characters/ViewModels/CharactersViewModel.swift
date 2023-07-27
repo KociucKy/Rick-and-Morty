@@ -13,23 +13,30 @@ final class CharactersViewModel: ObservableObject {
     @Published var allCharactersInfo: AllCharactersInfo = .emptyInfo
     @Published var isLoading: Bool = false
     @Published var currentPage: Int = 1
-    let service: CharactersWebService
+    let service: WebService
 
-    init(service: CharactersWebService) {
+    init(service: WebService) {
         self.service = service
     }
 
     func loadContent() async throws {
         isLoading = true
-        if currentPage == 1 && characters.isEmpty {
-            let charactersResponse = try await service.loadAllCharacters()
-            characters = charactersResponse.results.map { Character(apiItem: $0) }
-            allCharactersInfo = AllCharactersInfo(apiItem: charactersResponse.info)
-        } else if currentPage < allCharactersInfo.pages {
-            let charactersResponse = try await service.loadAnotherPage(currentPage)
-            characters.append(contentsOf: charactersResponse.results.map { Character(apiItem: $0) })
-            allCharactersInfo = AllCharactersInfo(apiItem: charactersResponse.info)
-        }
+        let charactersResponse: APIAllCharactersResponse = try await service.loadContent(
+            endpoint: CharactersEndpoint.getAllCharacters
+        )
+        characters = charactersResponse.results.map { Character(apiItem: $0) }
+        allCharactersInfo = AllCharactersInfo(apiItem: charactersResponse.info)
+        currentPage += 1
+        isLoading = false
+    }
+
+    func loadContentIfNeeded() async throws {
+        isLoading = true
+        let charactersResponse: APIAllCharactersResponse = try await service.loadContent(
+            endpoint: CharactersEndpoint.getAnotherCharactersPage(page: currentPage)
+        )
+        characters.append(contentsOf: charactersResponse.results.map { Character(apiItem: $0) })
+        allCharactersInfo = AllCharactersInfo(apiItem: charactersResponse.info)
         currentPage += 1
         isLoading = false
     }

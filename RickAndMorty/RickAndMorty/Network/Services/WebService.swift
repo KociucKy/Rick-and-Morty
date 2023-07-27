@@ -10,6 +10,7 @@ import Foundation
 protocol WebService {
     var httpClient: HTTPClient { get }
     func getURLRequest(for endpoint: APIEndpoint) throws -> URLRequest
+    func loadContent<T: Decodable>(endpoint: APIEndpoint) async throws -> T
 }
 
 extension WebService {
