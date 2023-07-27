@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct FavoritesListView: View {
+    @EnvironmentObject var realmViewModel: RealmViewModel
     var body: some View {
         NavigationStack {
-            Text("All favorites")
-                .font(.largeTitle)
-                .navigationTitle("Favorites")
+            ForEach(realmViewModel.favoriteCharacters) { character in
+                Text(character.name)
+            }
         }
     }
 }

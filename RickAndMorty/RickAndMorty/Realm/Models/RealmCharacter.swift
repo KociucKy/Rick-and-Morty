@@ -21,6 +21,7 @@ final class RealmCharacter: Object, Identifiable {
 
     convenience init(character: Character) {
         self.init()
+        self.id = character.id
         self.name = character.name
         self.status = character.status.rawValue
         self.species = character.status.rawValue

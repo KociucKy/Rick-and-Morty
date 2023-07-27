@@ -10,16 +10,40 @@ import RealmSwift
 
 final class RealmViewModel: ObservableObject {
     @ObservedResults(RealmCharacter.self) var favoriteCharacters
+    @Published var isLiked: Bool = false
 
-    func addToFavorites(character: Character) {
+    func checkStatus(character: Character) {
         let realmCharacter = RealmCharacter(character: character)
-        $favoriteCharacters.append(realmCharacter)
+        let object = favoriteCharacters.first(where: { $0.id == realmCharacter.id })
+        if let object {
+            isLiked = true
+        } else {
+            isLiked = false
+        }
     }
 
-    func removeFromFavorites(character: Character) {
+    private func addToFavorites(character: RealmCharacter) {
+        $favoriteCharacters.append(character)
+        self.objectWillChange.send()
+    }
+
+    private func removeFromFavorites(character: RealmCharacter) {
         let objectToRemove = favoriteCharacters.first(where: { $0.id == character.id })
         if let objectToRemove {
             $favoriteCharacters.remove(objectToRemove)
+            self.objectWillChange.send()
+        }
+    }
+
+    func handleLikeAction(character: Character) {
+        let realmCharacter = RealmCharacter(character: character)
+        let objectToPerformOn = favoriteCharacters.first(where: { $0.id == realmCharacter.id })
+        if let objectToPerformOn {
+            removeFromFavorites(character: objectToPerformOn)
+            checkStatus(character: character)
+        } else {
+            addToFavorites(character: realmCharacter)
+            checkStatus(character: character)
         }
     }
 }
