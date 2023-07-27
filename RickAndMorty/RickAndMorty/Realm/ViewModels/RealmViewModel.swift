@@ -14,8 +14,12 @@ final class RealmViewModel: ObservableObject {
 
     func checkStatus(character: Character) {
         let realmCharacter = RealmCharacter(character: character)
-        let object = favoriteCharacters.first(where: { $0.id == realmCharacter.id })
-        if let object {
+        checkStatusOnRealmObject(character: realmCharacter)
+    }
+
+    func checkStatusOnRealmObject(character: RealmCharacter) {
+        let object = favoriteCharacters.first(where: { $0.id == character.id })
+        if let _ = object {
             isLiked = true
         } else {
             isLiked = false
@@ -37,13 +41,16 @@ final class RealmViewModel: ObservableObject {
 
     func handleLikeAction(character: Character) {
         let realmCharacter = RealmCharacter(character: character)
-        let objectToPerformOn = favoriteCharacters.first(where: { $0.id == realmCharacter.id })
+        handleLikeActionOnRealmObject(character: realmCharacter)
+        checkStatus(character: character)
+    }
+
+    func handleLikeActionOnRealmObject(character: RealmCharacter) {
+        let objectToPerformOn = favoriteCharacters.first(where: { $0.id == character.id })
         if let objectToPerformOn {
             removeFromFavorites(character: objectToPerformOn)
-            checkStatus(character: character)
         } else {
-            addToFavorites(character: realmCharacter)
-            checkStatus(character: character)
+            addToFavorites(character: character)
         }
     }
 }

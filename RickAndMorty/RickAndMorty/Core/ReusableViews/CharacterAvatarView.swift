@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CharacterAvatarView: View {
-    let character: Character
+    let url: URL?
     var width: CGFloat = 100
     var height: CGFloat = 100
 
     var body: some View {
-        CacheAsyncImage(url: character.image) { phase in
+        CacheAsyncImage(url: url) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -37,6 +37,6 @@ struct CharacterAvatarView: View {
 
 struct CharacterAvatarView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterAvatarView(character: Character.mockCharacter)
+        CharacterAvatarView(url: Character.mockCharacter.image)
     }
 }

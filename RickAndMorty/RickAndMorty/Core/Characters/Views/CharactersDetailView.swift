@@ -42,7 +42,7 @@ struct CharactersDetailView: View {
 
     @ViewBuilder
     private func charactersHeaderView() -> some View {
-        CharacterAvatarView(character: character, width: 200, height: 200)
+        CharacterAvatarView(url: character.image, width: 200, height: 200)
             .padding(.bottom)
         Group {
             Text(character.name)
