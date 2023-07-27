@@ -11,7 +11,45 @@ struct CharactersDetailView: View {
     let character: Character
 
     var body: some View {
-        Text("Character's detail: \(character.name)")
+        VStack(spacing: 0) {
+            charactersHeaderView()
+            List {
+                ForEach(CharacterDetails.allCases) { detail in
+                    charactersInfoCell(charactersInfo: detail)
+                }
+            }
+            .listStyle(.plain)
+            .scrollDisabled(true)
+            .padding(.top)
+            Spacer()
+        }
+        .padding(.horizontal)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    @ViewBuilder
+    private func charactersHeaderView() -> some View {
+        CharacterAvatarView(character: character, width: 200, height: 200)
+            .padding(.bottom)
+        Group {
+            Text(character.name)
+                .font(.mulish(.title, weight: .black))
+            Text(character.species)
+                .font(.mulish(.headline, weight: .semibold))
+        }
+        .foregroundColor(.customTextColor)
+    }
+
+    @ViewBuilder
+    private func charactersInfoCell(charactersInfo: CharacterDetails) -> some View {
+        let value = charactersInfo.getKeyValue(character: character)
+        HStack(spacing: 0) {
+            Label(charactersInfo.key, systemImage: charactersInfo.icon)
+            Spacer()
+            Text(value.isEmpty ? "Not specified" : value)
+        }
+        .font(.mulish(.headline, weight: .regular))
+        .foregroundColor(.customTextColor)
     }
 }
 
