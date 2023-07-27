@@ -14,14 +14,8 @@ final class CharactersWebService: WebService {
         self.httpClient = httpClient
     }
 
-    func loadAllCharacters() async throws -> APIAllCharactersResponse {
-        let request = try getURLRequest(for: CharactersEndpoint.getAllCharacters)
-        let (data, response) = try await httpClient.perform(request: request)
-        return try APIRequestMapper.decodeData(data: data, response: response)
-    }
-
-    func loadAnotherPage(_ page: Int) async throws -> APIAllCharactersResponse {
-        let request = try getURLRequest(for: CharactersEndpoint.getAnotherCharactersPage(page: page))
+    func loadContent<T: Decodable>(endpoint: APIEndpoint) async throws -> T {
+        let request = try getURLRequest(for: endpoint)
         let (data, response) = try await httpClient.perform(request: request)
         return try APIRequestMapper.decodeData(data: data, response: response)
     }

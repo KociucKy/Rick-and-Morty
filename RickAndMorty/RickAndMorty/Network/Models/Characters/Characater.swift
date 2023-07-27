@@ -68,6 +68,62 @@ struct Character: Identifiable {
             created: "2017-11-04T18:48:46.250Z"
         )
     }
+
+    static var mockCharacters: [Character] {
+        return [
+            .init(
+                id: 1,
+                name: "Rick Sanchez",
+                status: .alive,
+                species: "Human",
+                type: "",
+                gender: .male,
+                origin: CharacterLocation(name: "Earth", url: URL(string: "https://rickandmortyapi.com/api/location/1")),
+                location: CharacterLocation(name: "Earth", url: URL(string: "https://rickandmortyapi.com/api/location/1")),
+                image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
+                episode: [
+                    URL(string: "https://rickandmortyapi.com/api/episode/1"),
+                    URL(string: "https://rickandmortyapi.com/api/episode/2")
+                ],
+                url: URL(string: "https://rickandmortyapi.com/api/character/1"),
+                created: "2017-11-04T18:48:46.250Z"
+            ),
+            .init(
+                id: 2,
+                name: "Rick Sanchez",
+                status: .alive,
+                species: "Human",
+                type: "",
+                gender: .male,
+                origin: CharacterLocation(name: "Earth", url: URL(string: "https://rickandmortyapi.com/api/location/1")),
+                location: CharacterLocation(name: "Earth", url: URL(string: "https://rickandmortyapi.com/api/location/1")),
+                image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
+                episode: [
+                    URL(string: "https://rickandmortyapi.com/api/episode/1"),
+                    URL(string: "https://rickandmortyapi.com/api/episode/2")
+                ],
+                url: URL(string: "https://rickandmortyapi.com/api/character/1"),
+                created: "2017-11-04T18:48:46.250Z"
+            ),
+            .init(
+                id: 3,
+                name: "Rick Sanchez",
+                status: .alive,
+                species: "Human",
+                type: "",
+                gender: .male,
+                origin: CharacterLocation(name: "Earth", url: URL(string: "https://rickandmortyapi.com/api/location/1")),
+                location: CharacterLocation(name: "Earth", url: URL(string: "https://rickandmortyapi.com/api/location/1")),
+                image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"),
+                episode: [
+                    URL(string: "https://rickandmortyapi.com/api/episode/1"),
+                    URL(string: "https://rickandmortyapi.com/api/episode/2")
+                ],
+                url: URL(string: "https://rickandmortyapi.com/api/character/1"),
+                created: "2017-11-04T18:48:46.250Z"
+            )
+        ]
+    }
 }
 
 extension Character {
@@ -86,5 +142,15 @@ extension Character {
             url: URL(string: apiItem.url),
             created: apiItem.created
         )
+    }
+}
+
+extension Character: Hashable {
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
     }
 }

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct AppEntry: App {
+    let charactersWebService = CharactersWebService(httpClient: URLSession(configuration: .default))
+
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            TabBarView(charactersWebService: charactersWebService)
         }
     }
 }

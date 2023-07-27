@@ -9,21 +9,29 @@ import SwiftUI
 
 struct TabBarView: View {
     @AppStorage("selectedTab") var selectedTab: Int = 0
+    @StateObject private var router = Router()
+    @StateObject private var charactersViewModel: CharactersViewModel
+
+    init(charactersWebService: WebService) {
+        _charactersViewModel = StateObject(wrappedValue: CharactersViewModel(service: charactersWebService))
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {
             CharactersListView()
                 .tag(0)
-                .tabItem { Label("Characters", systemImage: "person.3.fill") }
+                .tabItem { Label("Characters", systemImage: SFSymbols.threePersonsFilled.rawValue) }
+                .environmentObject(router)
+                .environmentObject(charactersViewModel)
             FavoritesListView()
                 .tag(1)
-                .tabItem { Label("Favorites", systemImage: "heart.fill") }
+                .tabItem { Label("Favorites", systemImage: SFSymbols.hearFilled.rawValue) }
         }
     }
 }
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(charactersWebService: CharactersWebService(httpClient: URLSession(configuration: .default)))
     }
 }

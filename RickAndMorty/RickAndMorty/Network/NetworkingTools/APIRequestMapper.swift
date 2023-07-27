@@ -8,9 +8,11 @@
 import Foundation
 
 struct APIRequestMapper {
+    static let decoder = JSONDecoder()
+
     static func decodeData<T>(data: Data, response: HTTPURLResponse) throws -> T where T: Decodable {
         if (200..<300) ~= response.statusCode {
-            return try JSONDecoder().decode(T.self, from: data)
+            return try decoder.decode(T.self, from: data)
         } else {
             throw APIError.invalidHTTPResponse
         }
