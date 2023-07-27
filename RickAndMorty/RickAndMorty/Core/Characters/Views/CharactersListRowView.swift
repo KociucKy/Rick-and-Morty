@@ -13,25 +13,7 @@ struct CharactersListRowView: View {
     var body: some View {
         VStack {
             HStack(spacing: 16) {
-                CacheAsyncImage(url: character.image) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .frame(width: 100, height: 100)
-                    case .success(let image):
-                        image
-                            .asyncImageStyling()
-                            .clipShape(Circle())
-                    case .failure:
-                        Image(systemName: SFSymbols.personCircleFilled.rawValue)
-                            .asyncImageStyling()
-                            .foregroundColor(.customTextColor)
-                    @unknown default:
-                        // TODO: - Error Handling
-                        fatalError()
-                    }
-                }
+                CharacterAvatarView(character: character)
                 charactersInfoSection(name: character.name, species: character.species, status: character.status)
                     .foregroundColor(.customTextColor)
                     .lineLimit(1)
