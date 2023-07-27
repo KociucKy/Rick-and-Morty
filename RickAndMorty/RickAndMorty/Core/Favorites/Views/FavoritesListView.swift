@@ -27,5 +27,6 @@ struct FavoritesListView: View {
 struct FavoritesListView_Previews: PreviewProvider {
     static var previews: some View {
         FavoritesListView()
+            .environmentObject(RealmViewModel())
     }
 }

@@ -13,17 +13,33 @@ struct CharactersListView: View {
 
     var body: some View {
         NavigationStack(path: $router.navPath) {
-            CharactersListScrollView(
-                characters: $charactersViewModel.characters,
-                isLoading: $charactersViewModel.isLoading,
-                loadMoreContent: charactersViewModel.loadContentIfNeeded
-            )
-            .padding(.horizontal)
+            Group {
+                if !charactersViewModel.characters.isEmpty {
+                    CharactersListScrollView(
+                        characters: $charactersViewModel.characters,
+                        isLoading: $charactersViewModel.isLoading,
+                        error: $charactersViewModel.error,
+                        loadMoreContent: charactersViewModel.loadContentIfNeeded
+                    )
+                    .padding(.horizontal)
+                } else {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                }
+            }
             .task {
                 do {
                     try await charactersViewModel.loadContent()
                 } catch {
-                    print("❌ Error: \(error)")
+                    charactersViewModel.error = error as? URLError
+                }
+            }
+            .alert(
+                charactersViewModel.error?.localizedDescription ?? "",
+                isPresented: $charactersViewModel.isShowingError
+            ) {
+                Button("Retry") {
+                    charactersViewModel.restartPagination()
                 }
             }
         }
@@ -36,6 +52,7 @@ fileprivate struct CharactersListScrollView: View {
     @EnvironmentObject var router: Router
     @Binding var characters: [Character]
     @Binding var isLoading: Bool
+    @Binding var error: URLError?
     var loadMoreContent: () async throws -> Void
 
     var body: some View {
@@ -51,13 +68,14 @@ fileprivate struct CharactersListScrollView: View {
                                 try await loadMoreContent()
                             }
                         } catch {
-                            print("❌ Error: \(error)")
+                            self.error = error as? URLError
                         }
                     }
                 }
             }
         }
         .navigationTitle("Characters")
+        .disabled(error != nil)
         .withAppRouter()
     }
 }
@@ -75,7 +93,7 @@ struct CharactersListView_Previews: PreviewProvider {
 
         var body: some View {
             NavigationStack {
-                CharactersListScrollView(characters: $characters, isLoading: $isLoading) {}
+                CharactersListScrollView(characters: $characters, isLoading: $isLoading, error: .constant(nil)) {}
             }
         }
     }

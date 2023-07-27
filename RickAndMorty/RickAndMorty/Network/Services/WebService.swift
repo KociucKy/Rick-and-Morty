@@ -16,7 +16,7 @@ protocol WebService {
 extension WebService {
     func getURLRequest(for endpoint: APIEndpoint) throws -> URLRequest {
         guard let url = endpoint.buildURL() else {
-            throw APIError.invalidURL
+            throw URLError(.badURL)
         }
         return URLRequest(url: url)
     }
