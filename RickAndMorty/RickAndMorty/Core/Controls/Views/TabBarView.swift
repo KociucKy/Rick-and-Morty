@@ -11,6 +11,7 @@ struct TabBarView: View {
     @AppStorage("selectedTab") var selectedTab: Int = 0
     @StateObject private var router = Router()
     @StateObject private var charactersViewModel: CharactersViewModel
+    @StateObject private var realmViewModel = RealmViewModel()
 
     init(charactersWebService: WebService) {
         _charactersViewModel = StateObject(wrappedValue: CharactersViewModel(service: charactersWebService))
@@ -27,6 +28,7 @@ struct TabBarView: View {
                 .tag(1)
                 .tabItem { Label("Favorites", systemImage: SFSymbols.hearFilled.rawValue) }
         }
+        .environmentObject(realmViewModel)
     }
 }
 

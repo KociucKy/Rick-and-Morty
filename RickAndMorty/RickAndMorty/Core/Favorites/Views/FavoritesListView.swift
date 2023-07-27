@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct FavoritesListView: View {
+    @EnvironmentObject var realmViewModel: RealmViewModel
+
     var body: some View {
         NavigationStack {
-            Text("All favorites")
-                .font(.largeTitle)
-                .navigationTitle("Favorites")
+            ScrollView {
+                LazyVStack {
+                    ForEach(realmViewModel.favoriteCharacters) { character in
+                        CharactersListRowView(realmCharacter: character)
+                    }
+                }
+            }
+            .navigationTitle("Favorites")
         }
     }
 }

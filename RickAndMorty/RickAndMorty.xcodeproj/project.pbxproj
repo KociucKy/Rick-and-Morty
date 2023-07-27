@@ -48,6 +48,10 @@
 		88C9995F2A72A74100D5A161 /* Navigation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9995E2A72A74100D5A161 /* Navigation+Ext.swift */; };
 		88C999632A72D44600D5A161 /* CharacterAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999622A72D44600D5A161 /* CharacterAvatarView.swift */; };
 		88C999662A72DCA700D5A161 /* CharacterDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999652A72DCA700D5A161 /* CharacterDetails.swift */; };
+		88C9996A2A72DE9E00D5A161 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 88C999692A72DE9E00D5A161 /* Realm */; };
+		88C9996C2A72DE9E00D5A161 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88C9996B2A72DE9E00D5A161 /* RealmSwift */; };
+		88C9996F2A72DED500D5A161 /* RealmCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9996E2A72DED500D5A161 /* RealmCharacter.swift */; };
+		88C999722A72E13700D5A161 /* RealmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C999712A72E13600D5A161 /* RealmViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,8 @@
 		88C9995E2A72A74100D5A161 /* Navigation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Ext.swift"; sourceTree = "<group>"; };
 		88C999622A72D44600D5A161 /* CharacterAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAvatarView.swift; sourceTree = "<group>"; };
 		88C999652A72DCA700D5A161 /* CharacterDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetails.swift; sourceTree = "<group>"; };
+		88C9996E2A72DED500D5A161 /* RealmCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCharacter.swift; sourceTree = "<group>"; };
+		88C999712A72E13600D5A161 /* RealmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C9996C2A72DE9E00D5A161 /* RealmSwift in Frameworks */,
+				88C9996A2A72DE9E00D5A161 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +137,7 @@
 				889645FB2A719E7800771130 /* Info.plist */,
 				881DF8092A7018BA00A537A5 /* AppEntry.swift */,
 				88B87D9C2A70248C00EF9A6E /* Network */,
+				88C999672A72DE6D00D5A161 /* Realm */,
 				881DF8182A70226B00A537A5 /* Core */,
 				889645EF2A719DAD00771130 /* DesignSystem */,
 				881DF80D2A7018BA00A537A5 /* Assets.xcassets */,
@@ -356,6 +365,31 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		88C999672A72DE6D00D5A161 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				88C9996D2A72DEC900D5A161 /* Models */,
+				88C999702A72E12B00D5A161 /* ViewModels */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		88C9996D2A72DEC900D5A161 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				88C9996E2A72DED500D5A161 /* RealmCharacter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		88C999702A72E12B00D5A161 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				88C999712A72E13600D5A161 /* RealmViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -373,6 +407,10 @@
 			dependencies = (
 			);
 			name = RickAndMorty;
+			packageProductDependencies = (
+				88C999692A72DE9E00D5A161 /* Realm */,
+				88C9996B2A72DE9E00D5A161 /* RealmSwift */,
+			);
 			productName = RickAndMorty;
 			productReference = 881DF8062A7018BA00A537A5 /* RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
@@ -401,6 +439,9 @@
 				Base,
 			);
 			mainGroup = 881DF7FD2A7018BA00A537A5;
+			packageReferences = (
+				88C999682A72DE9E00D5A161 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 881DF8072A7018BA00A537A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -452,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C9996F2A72DED500D5A161 /* RealmCharacter.swift in Sources */,
 				889645FD2A719EE200771130 /* Font+Mulish.swift in Sources */,
 				88B87DC12A70359700EF9A6E /* CharactersViewModel.swift in Sources */,
 				88B87DA32A70261B00EF9A6E /* APIAllCharactersResponse.swift in Sources */,
@@ -483,6 +525,7 @@
 				88C9995F2A72A74100D5A161 /* Navigation+Ext.swift in Sources */,
 				88B87DA12A7025DB00EF9A6E /* APILocation.swift in Sources */,
 				88C999662A72DCA700D5A161 /* CharacterDetails.swift in Sources */,
+				88C999722A72E13700D5A161 /* RealmViewModel.swift in Sources */,
 				889646022A71A2AF00771130 /* Colors+Ext.swift in Sources */,
 				88B87D972A70232D00EF9A6E /* CharactersListView.swift in Sources */,
 				88B87D9F2A7024B300EF9A6E /* APICharacter.swift in Sources */,
@@ -700,6 +743,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		88C999682A72DE9E00D5A161 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		88C999692A72DE9E00D5A161 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88C999682A72DE9E00D5A161 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		88C9996B2A72DE9E00D5A161 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88C999682A72DE9E00D5A161 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 881DF7FE2A7018BA00A537A5 /* Project object */;
 }

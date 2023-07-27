@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CharactersDetailView: View {
+    @EnvironmentObject var realmViewModel: RealmViewModel
     let character: Character
 
     var body: some View {
@@ -25,11 +26,23 @@ struct CharactersDetailView: View {
         }
         .padding(.horizontal)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            realmViewModel.checkStatus(character: character)
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    realmViewModel.handleLikeAction(character: character)
+                } label: {
+                    Image(systemName: realmViewModel.isLiked ? "heart.fill" : "heart")
+                }
+            }
+        }
     }
 
     @ViewBuilder
     private func charactersHeaderView() -> some View {
-        CharacterAvatarView(character: character, width: 200, height: 200)
+        CharacterAvatarView(url: character.image, width: 200, height: 200)
             .padding(.bottom)
         Group {
             Text(character.name)
@@ -56,5 +69,6 @@ struct CharactersDetailView: View {
 struct CharactersDetailView_Previews: PreviewProvider {
     static var previews: some View {
         CharactersDetailView(character: Character.mockCharacter)
+            .environmentObject(RealmViewModel())
     }
 }
